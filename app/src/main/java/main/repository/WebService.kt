@@ -2,7 +2,7 @@ package main.repository
 
 import com.google.gson.GsonBuilder
 import main.aplication.AppConstants
-import main.data.model.model.MovieList
+import main.data.data.model.MovieList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -17,6 +17,9 @@ interface WebService {
 
     @GET("movie/popular")
     suspend fun getPopularMovies(@Query("api_key") apiKey: String): MovieList
+
+    @GET("movie/now_playing")
+    suspend fun getLatestMovies(@Query("api_key") apiKey: String): MovieList
 }
 
 object RetrofitClient{

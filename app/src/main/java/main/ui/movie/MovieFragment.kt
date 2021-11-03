@@ -12,14 +12,15 @@ import com.reales.movieyofo.R
 
 import com.reales.movieyofo.databinding.FragmentMovieBinding
 import main.core.Resource
-import main.data.model.local.AppDatabase
-import main.data.model.local.LocalMovieDataSource
-import main.data.model.model.Movie
-import main.data.model.remote.RemoteMovieDataSource
+import main.data.data.local.AppDatabase
+import main.data.data.local.LocalMovieDataSource
+import main.data.data.model.Movie
+import main.data.data.remote.RemoteMovieDataSource
 import main.presentation.MovieViewModel
 import main.repository.MovieRespositoryImpl
 import main.repository.RetrofitClient
 import main.ui.movie.adapters.MovieAdapter
+import main.ui.movie.adapters.concat.LatestConcatAdapter
 import main.ui.movie.adapters.concat.PopularConcatAdapter
 import main.ui.movie.adapters.concat.TopRatedConcatAdapter
 import main.ui.movie.adapters.concat.UpcomingConcatAdapter
@@ -59,7 +60,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                             0,
                             UpcomingConcatAdapter(
                                 MovieAdapter(
-                                    result.data.first.results,
+                                    result.data.t1.results,
                                     this@MovieFragment
                                 )
                             )
@@ -68,7 +69,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                             1,
                             TopRatedConcatAdapter(
                                 MovieAdapter(
-                                    result.data.second.results,
+                                    result.data.t2.results,
                                     this@MovieFragment
                                 )
                             )
@@ -77,7 +78,16 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                             2,
                             PopularConcatAdapter(
                                 MovieAdapter(
-                                    result.data.third.results,
+                                    result.data.t3.results,
+                                    this@MovieFragment
+                                )
+                            )
+                        )
+                        addAdapter(
+                            2,
+                            LatestConcatAdapter(
+                                MovieAdapter(
+                                    result.data.t4.results,
                                     this@MovieFragment
                                 )
                             )

@@ -1,4 +1,4 @@
-package main.data.model.model
+package main.data.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

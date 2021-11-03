@@ -1,10 +1,10 @@
-package main.data.model.local
+package main.data.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import main.data.model.model.MovieEntity
+import main.data.data.model.MovieEntity
 
 @Database(entities = [MovieEntity::class], version=1)
 abstract class AppDatabase: RoomDatabase() {

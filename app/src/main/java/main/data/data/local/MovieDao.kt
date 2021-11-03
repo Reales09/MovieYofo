@@ -1,10 +1,10 @@
-package main.data.model.local
+package main.data.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import main.data.model.model.MovieEntity
+import main.data.data.model.MovieEntity
 
 @Dao
 interface MovieDao {

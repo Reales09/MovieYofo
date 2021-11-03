@@ -14,7 +14,7 @@ class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
         emit(Resource.Loading())
 
         try {
-            emit(Resource.Success(Triple(repo.getUpcomingMovies(), repo.getTopRatedMovies(), repo.getPopularMovies())))
+            emit(Resource.Success(NTuple4(repo.getUpcomingMovies(), repo.getTopRatedMovies(), repo.getPopularMovies(), repo.getLatestMovies())))
         } catch (e: Exception) {
             emit(Resource.Failure(e))
         }
@@ -27,3 +27,5 @@ class MovieViewModel(private val repo: MovieRepository) : ViewModel() {
         }
     }
 }
+
+data class NTuple4<T1,T2,T3,T4>(val t1:T1, val t2:T2,val t3:T3,val t4:T4 )

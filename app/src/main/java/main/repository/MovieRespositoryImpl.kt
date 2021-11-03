@@ -1,16 +1,17 @@
 package main.repository
 
 import main.core.InternetCheck
-import main.data.model.local.LocalMovieDataSource
-import main.data.model.model.MovieList
-import main.data.model.model.toMovieEntity
-import main.data.model.remote.RemoteMovieDataSource
+import main.data.data.local.LocalMovieDataSource
+import main.data.data.model.MovieList
+import main.data.data.model.toMovieEntity
+import main.data.data.remote.RemoteMovieDataSource
 
 class MovieRespositoryImpl(
     private val dataSourceRemote: RemoteMovieDataSource,
     private val dataSourceLocal: LocalMovieDataSource
 ) : MovieRepository {
     override suspend fun getUpcomingMovies(): MovieList {
+
         return if (InternetCheck.isNetworkAvaliable()) {
 
             dataSourceRemote.getUpcomingMovies().results.forEach { movie ->
@@ -46,6 +47,17 @@ class MovieRespositoryImpl(
             dataSourceLocal.getPopularMovies()
         }
 
+    }
+
+    override suspend fun getLatestMovies(): MovieList {
+        return if (InternetCheck.isNetworkAvaliable()) {
+            dataSourceRemote.getLatestMovies().results.forEach { movie ->
+                dataSourceLocal.saveMovie(movie.toMovieEntity("latest"))
+            }
+            dataSourceLocal.getLatestMovies()
+        } else {
+            dataSourceLocal.getLatestMovies()
+        }
     }
 
 }

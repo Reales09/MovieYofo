@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.reales.movieyofo.databinding.MovieItemBinding
 import main.core.BaseViewHolder
-import main.data.model.model.Movie
-import main.data.model.model.MovieList
+import main.data.data.model.Movie
 
 class MovieAdapter (private val movieList: List <Movie>,
                     private val itemClikListener: OnMovieClickListener
