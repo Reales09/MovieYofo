@@ -84,7 +84,7 @@ class MovieFragment : Fragment(R.layout.fragment_movie), MovieAdapter.OnMovieCli
                             )
                         )
                         addAdapter(
-                            2,
+                            3,
                             LatestConcatAdapter(
                                 MovieAdapter(
                                     result.data.t4.results,

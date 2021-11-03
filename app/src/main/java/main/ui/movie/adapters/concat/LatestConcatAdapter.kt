@@ -21,6 +21,7 @@ class LatestConcatAdapter (private val moviesAdapter: MovieAdapter): RecyclerVie
     }
 
     override fun getItemCount(): Int = 1
+
     private inner class ConcatViewHolder(val binding: LatestMovieRowBinding):
         BaseConcatHolder<MovieAdapter>(binding.root){
         override fun bind(adapter: MovieAdapter) {
